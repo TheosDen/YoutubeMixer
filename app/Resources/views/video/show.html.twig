@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Video</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ video.id }}</td>
+            </tr>
+            <tr>
+                <th>Ytid</th>
+                <td>{{ video.ytId }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ video.title }}</td>
+            </tr>
+            <tr>
+                <th>Start</th>
+                <td>{{ video.start }}</td>
+            </tr>
+            <tr>
+                <th>End</th>
+                <td>{{ video.end }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <a class="btn btn-secondary" href="{{ path('video_edit', { 'id': video.id }) }}">Edit</a>
+
+        <div class="float-right">
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+
+    <br>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('video_index') }}">Back to the list</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Show</li>
+        </ol>
+    </nav>
+{% endblock %}

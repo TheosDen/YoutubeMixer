@@ -10,6 +10,8 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
     {
@@ -17,5 +19,13 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
+    }
+
+    /**
+     * @Route("/new", name="test")
+     * @param Request $request
+     */
+    public function newAction(Request $request)
+    {
     }
 }

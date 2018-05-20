@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Videos list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ytid</th>
+                <th>Title</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for video in videos %}
+            <tr>
+                <td><a href="{{ path('video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
+                <td>{{ video.ytId }}</td>
+                <td>{{ video.title }}</td>
+                <td>{{ video.start }}</td>
+                <td>{{ video.end }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-secondary" href="{{ path('video_show', { 'id': video.id }) }}" role="button">show</a>
+                        <a class="btn btn-secondary" href="{{ path('video_edit', { 'id': video.id }) }}" role="button">edit</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('video_new') }}">Create a new video</a></li>
+        </ol>
+    </nav>
+
+{% endblock content %}
