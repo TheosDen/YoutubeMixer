@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Playlists</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Items</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for playlist in playlists %}
+            <tr>
+                <td><a href="{{ path('playlist_show', { 'id': playlist.id }) }}">{{ playlist.id }}</a></td>
+                <td>{{ playlist.title }}</td>
+                <td>{% if playlist.items %}
+                        <ul>
+                        {% for item in playlist.items %}
+                            <li>{{ item.ytId }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('playlist_show', { 'id': playlist.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('playlist_edit', { 'id': playlist.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('playlist_new') }}">Create a new playlist</a>
+        </li>
+    </ul>
+{% endblock %}
